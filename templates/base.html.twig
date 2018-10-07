@@ -8,5 +8,23 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
+
+        {# вы можете прочитать и отобразить только один тип флеш-сообщений... #}
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {# ...или вы можете прочитатьи отобразить все доступные флеш-сообщения #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
     </body>
 </html>
