@@ -14,17 +14,17 @@ class LuckyController extends Controller
     /**
      * @Route("/lucky/number/{max}", name="app_lucky_number")
      * @param $max
-     * @param Request $request
-     * @param SessionInterface $session
+     * @param LoggerInterface $logger
      * @return Response
      */
-    public function number($max, Request $request, SessionInterface $session)
+    public function number($max, LoggerInterface $logger2)
     {
 
+        $logger2->info('fuck you');
 
-        $this->addFlash('notice', 'fuck you and I am go away');
-
-        $number = mt_rand(0, $max);
+//        $this->addFlash('notice', 'fuck you and I am go away');
+//
+//        $number = mt_rand(0, $max);
 
         return $this->render('base.html.twig');
     }
