@@ -14,7 +14,14 @@ class BlogController extends Controller
      */
     public function homepage($_locale)
     {
-        return new Response('homepage, locale: ' . $_locale);
+
+        $blog_entries = [
+            ['title' => 'title', 'body' => 'body'],
+        ];
+
+        return $this->render('blog.html.twig', [
+            'blog_entries' => $blog_entries
+        ]);
     }
     
     /**
@@ -22,7 +29,7 @@ class BlogController extends Controller
      *
      * @Route("/blog/{page}", name="blog_list", requirements={"page" = "\d+"})
      */
-    public function list($page = 1)
+    public function list($page)
     {
 
         echo $this->generateUrl('blog_list', ['page' => 1, 'category' => 'symfony'], UrlGeneratorInterface::ABSOLUTE_URL) . "\n";
